@@ -1337,7 +1337,7 @@ err:
 	return -ENODEV;
 }
 
-static int mxl692_remove(struct i2c_client *client)
+static void mxl692_remove(struct i2c_client *client)
 {
 	struct mxl692_dev *dev = i2c_get_clientdata(client);
 
@@ -1345,7 +1345,6 @@ static int mxl692_remove(struct i2c_client *client)
 	i2c_set_clientdata(client, NULL);
 	kfree(dev);
 
-	return 0;
 }
 
 static const struct i2c_device_id mxl692_id_table[] = {

@@ -505,7 +505,7 @@ err_free_handler:
 	return ret;
 }
 
-static int dw9768_remove(struct i2c_client *client)
+static void dw9768_remove(struct i2c_client *client)
 {
 	struct v4l2_subdev *sd = i2c_get_clientdata(client);
 	struct dw9768 *dw9768 = sd_to_dw9768(sd);
@@ -518,7 +518,6 @@ static int dw9768_remove(struct i2c_client *client)
 		dw9768_runtime_suspend(&client->dev);
 	pm_runtime_set_suspended(&client->dev);
 
-	return 0;
 }
 
 static const struct of_device_id dw9768_of_table[] = {

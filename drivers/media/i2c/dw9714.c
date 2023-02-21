@@ -189,7 +189,7 @@ err_cleanup:
 	return rval;
 }
 
-static int dw9714_remove(struct i2c_client *client)
+static void dw9714_remove(struct i2c_client *client)
 {
 	struct v4l2_subdev *sd = i2c_get_clientdata(client);
 	struct dw9714_device *dw9714_dev = sd_to_dw9714_vcm(sd);
@@ -201,13 +201,10 @@ static int dw9714_remove(struct i2c_client *client)
 		if (ret) {
 			dev_err(&client->dev,
 				"Failed to disable vcc: %d\n", ret);
-			return ret;
 		}
 	}
 	pm_runtime_set_suspended(&client->dev);
 	dw9714_subdev_cleanup(dw9714_dev);
-
-	return 0;
 }
 
 /*

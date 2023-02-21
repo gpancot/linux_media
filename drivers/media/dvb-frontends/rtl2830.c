@@ -865,7 +865,7 @@ err:
 	return ret;
 }
 
-static int rtl2830_remove(struct i2c_client *client)
+static void rtl2830_remove(struct i2c_client *client)
 {
 	struct rtl2830_dev *dev = i2c_get_clientdata(client);
 
@@ -875,7 +875,6 @@ static int rtl2830_remove(struct i2c_client *client)
 	regmap_exit(dev->regmap);
 	kfree(dev);
 
-	return 0;
 }
 
 static const struct i2c_device_id rtl2830_id_table[] = {

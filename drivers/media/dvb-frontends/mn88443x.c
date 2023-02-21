@@ -762,7 +762,7 @@ err_i2c_t:
 	return ret;
 }
 
-static int mn88443x_remove(struct i2c_client *client)
+static void mn88443x_remove(struct i2c_client *client)
 {
 	struct mn88443x_priv *chip = i2c_get_clientdata(client);
 
@@ -770,7 +770,6 @@ static int mn88443x_remove(struct i2c_client *client)
 
 	i2c_unregister_device(chip->client_t);
 
-	return 0;
 }
 
 static const struct mn88443x_spec mn88443x_spec_pri = {
