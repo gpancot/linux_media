@@ -1383,7 +1383,7 @@ err_powerdown:
 	return ret;
 }
 
-static int max9286_remove(struct i2c_client *client)
+static void max9286_remove(struct i2c_client *client)
 {
 	struct max9286_priv *priv = i2c_get_clientdata(client);
 
@@ -1396,8 +1396,6 @@ static int max9286_remove(struct i2c_client *client)
 	gpiod_set_value_cansleep(priv->gpiod_pwdn, 0);
 
 	max9286_cleanup_dt(priv);
-
-	return 0;
 }
 
 static const struct of_device_id max9286_dt_ids[] = {

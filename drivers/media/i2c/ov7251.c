@@ -1471,7 +1471,7 @@ free_ctrl:
 	return ret;
 }
 
-static int ov7251_remove(struct i2c_client *client)
+static void ov7251_remove(struct i2c_client *client)
 {
 	struct v4l2_subdev *sd = i2c_get_clientdata(client);
 	struct ov7251 *ov7251 = to_ov7251(sd);
@@ -1480,8 +1480,6 @@ static int ov7251_remove(struct i2c_client *client)
 	media_entity_cleanup(&ov7251->sd.entity);
 	v4l2_ctrl_handler_free(&ov7251->ctrls);
 	mutex_destroy(&ov7251->lock);
-
-	return 0;
 }
 
 static const struct of_device_id ov7251_of_match[] = {
